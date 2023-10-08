@@ -1,4 +1,5 @@
 import { css, html, LitElement } from 'lit';
+import { Ripple } from '../../lib/ripple/index.js';
 
 export const VmButtonSize = {
   Small: 'small',
@@ -70,6 +71,8 @@ export class VmButton extends LitElement {
     button.size--large {
       padding: 20px 96px;
     }
+
+    ${Ripple.styles}
   `;
 
   constructor() {
@@ -79,6 +82,10 @@ export class VmButton extends LitElement {
     this.outlined = false;
     this.color = 'orange';
     this.size = VmButtonSize.Default;
+  }
+
+  onClick(e) {
+    Ripple.handler(e);
   }
 
   render() {
@@ -100,7 +107,11 @@ export class VmButton extends LitElement {
 
     classes.push(`color--${this.color}`);
 
-    return html`<button type="button" class="vm-button ${classes.join(' ')}">
+    return html`<button
+      type="button"
+      class="vm-button ${classes.join(' ')}"
+      @click=${this.onClick}
+    >
       ${this.label}
     </button> `;
   }
