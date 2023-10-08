@@ -18,62 +18,63 @@ export class VmButton extends LitElement {
     };
   }
 
-  static styles = css`
-    button {
-      border: none;
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: 800;
-      font-family: 'Cormorant', serif;
-    }
+  static styles = [
+    Ripple.styles,
+    css`
+      button {
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 800;
+        font-family: 'Cormorant', serif;
+      }
 
-    button:hover {
-      opacity: 0.8;
-    }
+      button:hover {
+        opacity: 0.8;
+      }
 
-    button.block {
-      width: 100%;
-    }
+      button.block {
+        width: 100%;
+      }
 
-    button.outlined:hover {
-      opacity: 1;
-      background: var(--vm-orange);
-    }
+      button.outlined:hover {
+        opacity: 1;
+        background: var(--vm-orange);
+      }
 
-    button.color--orange {
-      background: var(--vm-orange);
-      color: var(--vm-blue);
-    }
+      button.color--orange {
+        background: var(--vm-orange);
+        color: var(--vm-blue);
+      }
 
-    button.outlined {
-      background: transparent;
-      border: 1px solid var(--vm-orange);
-    }
+      button.outlined {
+        background: transparent;
+        border: 1px solid var(--vm-orange);
+      }
 
-    button.color--blue {
-      background: var(--vm-blue);
-      color: var(--vm-white);
-      border: none;
-    }
+      button.color--blue {
+        background: var(--vm-blue);
+        color: var(--vm-white);
+        border: none;
+      }
 
-    button.color-blue:hover {
-      opacity: 0.9;
-    }
+      button.color-blue:hover {
+        opacity: 0.9;
+      }
 
-    button.size--small {
-      padding: 13px 33px;
-    }
+      button.size--small {
+        padding: 13px 33px;
+      }
 
-    button.size--default {
-      padding: 20px 56px;
-    }
+      button.size--default {
+        padding: 20px 56px;
+      }
 
-    button.size--large {
-      padding: 20px 96px;
-    }
-
-    ${Ripple.styles}
-  `;
+      button.size--large {
+        padding: 20px 96px;
+      }
+    `,
+  ];
 
   constructor() {
     super();
@@ -109,7 +110,7 @@ export class VmButton extends LitElement {
 
     return html`<button
       type="button"
-      class="vm-button ${classes.join(' ')}"
+      class=${classes.join(' ')}
       @click=${this.onClick}
     >
       ${this.label}
