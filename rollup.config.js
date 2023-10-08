@@ -16,13 +16,13 @@ export default {
     dir: 'docs',
   },
   preserveEntrySignatures: false,
-
   plugins: [
     /** Enable using HTML as rollup entrypoint */
     html({
       minify: true,
       injectServiceWorker: true,
       serviceWorkerPath: 'docs/sw.js',
+      publicPath: '/books',
     }),
     /** Resolve bare module imports */
     nodeResolve(),
