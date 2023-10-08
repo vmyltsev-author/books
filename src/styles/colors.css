@@ -4,3 +4,19 @@
   --vm-orange: #FFCA42;
   --vm-blue: #1B3764;
 }
+
+.bg-blue {
+  background: var(--vm-blue);
+}
+
+.bg-white {
+  background: var(--vm-white);
+}
+
+.bg-gray {
+  background: var(--vm-gray);
+}
+
+.bg-orange {
+  background: var(--vm-orange);
+}
