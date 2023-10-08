@@ -5,10 +5,10 @@ class VRoot extends LitElement {
 
   render() {
     return html`
-      <div>
-        <h1>Test</h1>
-        <vm-button label="Текст кнопки"></vm-button>
-      </div>
+      <main>
+        <vm-hero></vm-hero>
+      </main>
+      <footer></footer>
     `;
   }
 }

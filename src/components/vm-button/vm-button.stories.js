@@ -1,7 +1,7 @@
 // Button.stories.js
 
 import { html } from 'lit';
-import './index.js';
+import { VmButtonSize } from './index.js';
 
 export default {
   component: 'vm-button',
@@ -50,4 +50,19 @@ export const Colors = {
         <vm-button label="Текст кнопки" color=${color}></vm-button>
       </div>
     `,
+};
+
+export const Sizes = {
+  argTypes: {
+    size: {
+      type: 'select',
+      options: Object.values(VmButtonSize),
+    },
+  },
+  args: {
+    size: VmButtonSize.Default,
+  },
+  render: ({ size }) => html`
+    <vm-button label="Текст кнопки" size=${size}></vm-button>
+  `,
 };
