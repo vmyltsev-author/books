@@ -1,10 +1,11 @@
 import { css, html, LitElement } from 'lit';
 
-/**
- * @attrs label     Button text.
- *
- * @tag   vm-button
- */
+export const VmButtonSize = {
+  Small: 'small',
+  Default: 'default',
+  Large: 'large',
+};
+
 export class VmButton extends LitElement {
   static get properties() {
     return {
@@ -12,6 +13,7 @@ export class VmButton extends LitElement {
       block: { type: Boolean, reflect: true },
       outlined: { type: Boolean, reflect: true },
       color: { type: String, reflect: true },
+      size: { type: String, reflect: true },
     };
   }
 
@@ -19,7 +21,6 @@ export class VmButton extends LitElement {
     button {
       border: none;
       cursor: pointer;
-      padding: 20px 56px;
       font-size: 20px;
       font-weight: 800;
       font-family: 'Cormorant', serif;
@@ -38,7 +39,7 @@ export class VmButton extends LitElement {
       background: var(--vm-orange);
     }
 
-    button.color-orange {
+    button.color--orange {
       background: var(--vm-orange);
       color: var(--vm-blue);
     }
@@ -48,7 +49,7 @@ export class VmButton extends LitElement {
       border: 1px solid var(--vm-orange);
     }
 
-    button.color-blue {
+    button.color--blue {
       background: var(--vm-blue);
       color: var(--vm-white);
       border: none;
@@ -56,6 +57,18 @@ export class VmButton extends LitElement {
 
     button.color-blue:hover {
       opacity: 0.9;
+    }
+
+    button.size--small {
+      padding: 13px 33px;
+    }
+
+    button.size--default {
+      padding: 20px 56px;
+    }
+
+    button.size--large {
+      padding: 20px 96px;
     }
   `;
 
@@ -65,6 +78,7 @@ export class VmButton extends LitElement {
     this.block = false;
     this.outlined = false;
     this.color = 'orange';
+    this.size = VmButtonSize.Default;
   }
 
   render() {
@@ -82,7 +96,9 @@ export class VmButton extends LitElement {
       classes.push('dark');
     }
 
-    classes.push(`color-${this.color}`);
+    classes.push(`size--${this.size}`);
+
+    classes.push(`color--${this.color}`);
 
     return html`<button type="button" class="vm-button ${classes.join(' ')}">
       ${this.label}
